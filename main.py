@@ -62,6 +62,8 @@ def new_features(X):
     X["Age"] = X["YrSold"] - X["YearBuilt"]
     X["Garage"] = X["GarageCars"].map(lambda x: x if x == 0 else 1)
     X["YrsFromRenn"] = X["YrSold"] - X["YearRemodAdd"]
+    X["HasBasement"] = (X["TotalBsmtSF"] > 0).astype(int)
+    X["HasFinishedBsmt"] = ((X["BsmtFinSF1"] + X["BsmtFinSF2"]) > 0).astype(int)
     return X
 
 
